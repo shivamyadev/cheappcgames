@@ -1,0 +1,99 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cheappcgames — Minimal & Vibrant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+ 
+</head>
+<body>
+  <nav class="nav">
+    <div class="brand">
+      <div class="logo">CG</div>
+      <div>
+        <h1 style="margin:0; font-size:16px">Cheappcgames</h1>
+        <div class="small" style="margin-top:2px; color:var(--muted); font-weight:600; font-size:12px">PC • Steam • Xbox</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#categories">Categories</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a id="admin-open" href="javascript:void(0)">Admin</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="hero" id="home">
+      <div class="hero-left">
+        <h2>Cheap PC, Steam & Xbox Game Keys — minimal. vibrant. instant.</h2>
+        <p>Fast checkout, clear prices, and an easy chat-to-buy flow. Browse by platform or search for your favorite title.</p>
+        <div class="controls">
+          <input class="search" id="search" placeholder="Search games or platform...">
+          <button class="btn" id="resetBtn">Reset</button>
+          <button class="btn secondary" id="exportBtn">Export JSON</button>
+        </div>
+      </div>
+      <div style="width:260px; text-align:right">
+        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="hero" style="width:220px; border-radius:12px; box-shadow:0 14px 40px rgba(0,0,0,0.6)">
+      </div>
+    </section>
+
+    <section id="categories">
+      <div class="categories" id="categoryChips"></div>
+    </section>
+
+    <section>
+      <div class="grid" id="productsGrid"></div>
+    </section>
+
+    <footer>
+      <p>© <span id="year"></span> Cheappcgames — Built with ❤️. <strong>cheappcgames-admin</strong></p>
+    </footer>
+  </main>
+
+  <!-- Chat Modal -->
+  <div class="modal" id="chatModal">
+    <div class="modal-backdrop" onclick="closeChat()"></div>
+    <div class="modal-card" role="dialog" aria-modal="true">
+      <h3 id="chatTitle">Chat to Buy</h3>
+      <div class="field"><label class="small">Your Name</label><input id="buyerName"></div>
+      <div class="field"><label class="small">Your Email</label><input id="buyerEmail" type="email"></div>
+      <div class="field"><label class="small">Message</label><textarea id="buyerMessage" rows="3"></textarea></div>
+      <div class="modal-actions">
+        <button class="btn secondary" onclick="closeChat()">Cancel</button>
+        <button class="btn" id="sendInquiry">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin floating -->
+  <div class="admin-panel">
+    <div class="admin-floating" id="adminFloat">Admin</div>
+  </div>
+
+  <!-- Admin overlay -->
+  <div class="admin-overlay" id="adminOverlay">
+    <div class="admin-card">
+      <div style="display:flex; justify-content:space-between; align-items:center">
+        <h3 style="margin:0">Admin Dashboard</h3>
+        <div>
+          <button class="btn secondary" id="importBtn">Import JSON</button>
+          <button class="btn" id="saveLocalBtn">Save Locally</button>
+          <button class="btn secondary" id="closeAdmin">Close</button>
+        </div>
+      </div>
+      <p class="small">Edit game details in-place. Use EXPORT on the main page to download the JSON. For production you should replace this with a real backend.</p>
+      <div class="admin-list" id="adminList"></div>
+    </div>
+  </div>
+
+  <input type="file" id="fileInput" accept="application/json" style="display:none">
+
+  <script src="script.js"></script>
+</body>
+</html>
